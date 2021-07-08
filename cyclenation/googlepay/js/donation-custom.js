@@ -35,6 +35,12 @@
                 }
             });
 
+            // Get amount passed from query string
+            let amount = jqcn.getQuerystring("amount");
+            if (amount.length > 0) {
+                populateAmount(amount);
+            }
+
             jqcn('.donation-form').submit(function() {
                 //move contact info details to billing info if any fields are blank
                 jqcn('[id^=billing\\_]').each(function() {

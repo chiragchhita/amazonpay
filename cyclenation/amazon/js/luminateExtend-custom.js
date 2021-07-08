@@ -158,25 +158,6 @@ jqcn('[id^=donor_]').each(function(){
   });
 });
 
-function populateAmount(amount) {
-	var match = jqcn('label[data-amount="' + amount + '"]');
-	if(match.length>=1){
-		jqcn(match).click();
-		jqcn('#confirmationAmt').text(amount);
-		// feeOption.coverFee();
-	} else {
-		jqcn('label.active').removeClass("active");
-		jqcn('label.level_other').addClass("active");
-		jqcn('.level-other-input').slideDown();
-		jqcn('#other-radio').prop({'checked': true}).attr({'aria-checked': true});
-		jqcn('#other-amount-entered').removeAttr('disabled');
-		jqcn('#other-amount-entered').attr('name', 'other_amount_entered');
-		jqcn('input[name=other_amount], input[name=gift_amount], input[name=other_amount_entered]').val(amount);
-		jqcn('#confirmationAmt').text(amount);
-		// feeOption.coverFee();
-	}
-}
-
 jqcn('#other-amount-entered').on('blur', function(){
 	jqcn('#confirmationAmt').text(jqcn('input[name=other_amount]').val());
 });

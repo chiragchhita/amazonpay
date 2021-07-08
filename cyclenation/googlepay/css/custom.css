@@ -164,7 +164,8 @@ padding: 10px;
 }
 .level-other-input .form-control {
 	display:inline-block;
-	width:70%;
+	width:60% !important;
+  height: 4.5rem;
 }
 input#other-amount-entered {
 	top:2px;

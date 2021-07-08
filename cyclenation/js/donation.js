@@ -84,6 +84,26 @@ jQuery(document).on("doublethedonation_company_id", function () {
 	jQuery("#double_the_donation_company_id").val(dtd_company_id);
 });
 
+// Get amount from URL
+function populateAmount(amount) {
+	var match = jQuery('label[data-amount="' + amount + '"]');
+	if(match.length>=1){
+		jQuery(match).click();
+		jQuery('#confirmationAmt').text(amount);
+		// feeOption.coverFee();
+	} else {
+		jQuery('label.active').removeClass("active");
+		jQuery('label.level_other').addClass("active");
+		jQuery('.level-other-input').slideDown();
+		jQuery('#other-radio').prop({'checked': true}).attr({'aria-checked': true});
+		jQuery('#other-amount-entered').removeAttr('disabled');
+		jQuery('#other-amount-entered').attr('name', 'other_amount_entered');
+		jQuery('input[name=other_amount], input[name=gift_amount], input[name=other_amount_entered]').val(amount);
+		jQuery('#confirmationAmt').text(amount);
+		// feeOption.coverFee();
+	}
+}
+
 // GA Donation Success
 (function(){
 	var a = document.createElement('script');
